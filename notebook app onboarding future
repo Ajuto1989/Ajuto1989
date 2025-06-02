@@ -1,0 +1,99 @@
+Based on the transcripts, here's a clearer breakdown of the Notebooks user journey across different environments:
+
+## **Notebooks User Journey by Environment**
+
+### **Research Environment**
+**From Transcript 2:**
+> "Research is only notebook concern productionizing... will be dalam's job."
+
+> "Research app. If they're onboarding, they have to put a CIA, right? Like if they're onboarding, let's say in research, right?" 
+> "That come to addam... We'll take care as an input."
+
+**User Journey:**
+1. User works entirely within Notebooks interface for research activities
+2. **No direct COPTR interaction** - stays in Notebooks ecosystem
+3. For research onboarding requiring CIR, the request flows through DALM APIs behind the scenes
+4. User doesn't see DALM interface but DALM handles governance with COPTR
+
+### **Production Environment**
+**From Transcript 2:**
+> "You'll pretty much be in notebooks as long as you are in process mode. Only when you go to production mode, you will start using it. In and then that log books have DLM API integration pack"
+
+> "Notebooks don't doesn't come to copy at all. It comes to only Cosmos comes to copy directly."
+
+**User Journey:**
+1. User starts productionization process in Notebooks
+2. **Notebooks calls DALM APIs** for production onboarding
+3. DALM handles the complete flow:
+   - Creates application profile
+   - Manages COPTR integration for governance
+   - Handles service account creation and provisioning
+4. User may see DALM interface for production app management
+
+### **Application Convergence Strategy**
+**From Transcript 2:**
+> "For now for getting the existing application what is onboarded today to the for the notebook application. So for that also Dalam is going to support."
+
+> "Dalam see it's not migration to Azer Dalam app... Will converge... all the NB apps today will become data element tomorrow."
+
+**Migration Path:**
+1. **Existing Notebooks apps** will be migrated to become DALM applications
+2. **No separate migration APIs** needed - everything flows through DALM
+3. Notebooks team doesn't build direct COPTR integration
+
+## **Technical Integration Details**
+
+### **API Integration Pattern**
+**From Transcript 2:**
+> "So they're not. So they're. At least for notebooks, there won't be any direct interaction with it will all go through."
+
+> "So when that integration comes into so, they will be calling our profile onboarding API. By which we will have to initiate these things with. For research."
+
+**Technical Flow:**
+```
+Notebooks UI → DALM Profile Onboarding API → COPTR RIR API → Resource Provisioning
+```
+
+### **Environment-Agnostic Integration**
+**From Transcript 2:**
+> "The interactions between Dal and copper should remain the same. It should not change basing on the environment because today we have second rules at certain level, which doesn't mean they'll exist."
+
+> "So that is one thing that we are finalizing that yet interaction between Helen Copper is agnostic to the... whether to get an approval or not? It's a copper concern, not the Dalam concern."
+
+## **User Experience by Environment**
+
+### **Research Users:**
+- **Interface**: Pure Notebooks experience
+- **Backend**: DALM APIs handle COPTR integration transparently
+- **Governance**: Simplified or no approval process
+- **User Awareness**: User doesn't know about DALM/COPTR interaction
+
+### **Production Users:**
+- **Interface**: Notebooks → DALM handoff
+- **Backend**: Full COPTR governance workflow
+- **Governance**: Complete CIR approval process (CMO, Budget, Architecture)
+- **User Awareness**: User sees transition to DALM for production workflows
+
+### **Hybrid Workflow Example:**
+**From Transcript 1:**
+> "Suppose a new I already have one application. I want to do research on top of it. So I come to dial up and enabled research profile on RI have to go to the notebooks and start creating app there which behind the scenes they'll talk to delim."
+
+**Flow:**
+1. User has existing DALM application
+2. Wants to add research capability
+3. Goes to DALM to enable research profile
+4. Can then work in Notebooks for research activities
+5. Notebooks talks back to DALM APIs for any provisioning needs
+
+## **Key Distinctions**
+
+### **Notebooks vs. Cosmos:**
+**From Transcript 2:**
+> "We're actually working on Cosmos, not in notebooks... Their team currently are actively into the Cosmos. All the investments are going into Cosmos, not into much into notebooks from their side."
+
+> "Cosmos says big thing, actually, they can't come... They wanted to keep the things separate."
+
+- **Notebooks**: Integrated through DALM APIs
+- **Cosmos**: Will have direct COPTR integration (separate from this flow)
+
+This architecture ensures Notebooks users get appropriate governance based on their environment while maintaining the research-focused user experience they expect.
