@@ -1,0 +1,73 @@
+Based on the transcripts, here's what's outlined for Cosmos app onboarding:
+
+## **Cosmos Integration Approach**
+
+### **Direct COPTR Integration (Not Through DALM)**
+**From Transcript 2:**
+> "Notebooks don't doesn't come to copy at all. It comes to only Cosmos comes to copy directly."
+
+> "Cosmos says big thing, actually, they can't come... They wanted to keep the things separate."
+
+**Key Points:**
+- Cosmos will **NOT** integrate through DALM like Notebooks
+- Cosmos will have **direct integration with COPTR**
+- They explicitly wanted to keep their system separate from the DALM integration approach
+
+### **Cosmos Team's Position**
+**From Transcript 2:**
+> "Once, once they will explicitly come, because when we were negotiating we we were intending to have everything together, but they were not very keen on that. They wanted to keep the things separate."
+
+**What This Means:**
+- Original plan was to have unified integration (like Notebooks through DALM)
+- Cosmos team rejected this approach
+- They prefer maintaining their own integration path
+
+### **Current Development Focus**
+**From Transcript 2:**
+> "We're actually working on Cosmos, not in notebooks... Their team currently are actively into the Cosmos. All the investments are going into Cosmos, not into much into notebooks from their side."
+
+**Strategic Direction:**
+- Cosmos is getting more investment and focus than traditional Notebooks
+- This explains why they want direct control over their integration
+
+### **Technical Implementation**
+**From Transcript 2:**
+> "That was a combined call for notebook as well as Cosmos application onboarding."
+
+**Current Status:**
+- There were combined discussions about onboarding for both platforms
+- But implementation paths will be different:
+  - **Notebooks**: Through DALM APIs
+  - **Cosmos**: Direct COPTR integration
+
+## **What's Missing from Transcripts**
+
+The transcripts don't provide detailed specifics about:
+- **Cosmos user journey flow**
+- **Which environments Cosmos will support**
+- **Specific APIs Cosmos will use**
+- **Timeline for Cosmos-COPTR integration**
+- **Governance requirements for Cosmos apps**
+
+## **Implied Architecture**
+
+Based on the separation mentioned:
+
+```
+Notebooks → DALM APIs → COPTR (Unified governance)
+Cosmos → Direct COPTR APIs (Separate governance path)
+```
+
+### **Likely Reasons for Separation:**
+1. **Cosmos Complexity**: As noted, "Cosmos is like maybe if you're 10X or 20X more than what Lord Books provides"
+2. **Different Use Cases**: Cosmos handles ML orchestration vs. Notebooks' research focus
+3. **Team Autonomy**: Cosmos team wants control over their integration approach
+4. **Technical Architecture**: Cosmos may have different technical requirements that don't fit the DALM model
+
+## **Next Steps Mentioned**
+**From Transcript 2:**
+> "So for Kosmos that has to be done... When that integration comes into so, they will be calling our profile onboarding API."
+
+This suggests that while Cosmos wants direct integration, they may still need to work out the specific details of how their onboarding will work with COPTR's governance model.
+
+The transcripts indicate that Cosmos integration is still being planned and will require separate design discussions beyond what was covered in these DALM-focused meetings.
