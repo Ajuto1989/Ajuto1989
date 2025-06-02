@@ -1,0 +1,96 @@
+Based on the two transcripts, here's a comprehensive summary of how app onboarding will work for both DALM and Notebooks:
+
+## Overall App Onboarding Flow
+
+### **Two Main Phases:**
+1. **Governance Phase** - handled by COPTR
+2. **Provisioning Phase** - coordinated between DALM and COPTR
+
+## **DALM App Onboarding Process**
+
+### **New Application Creation:**
+- User creates application in DALM UI
+- User selects GCP project ID and required services
+- DALM calls COPTR's RIR (Resource Intake Request) API
+- COPTR validates if CIR (Cloud Intake Request) exists for the application
+
+### **Two Scenarios for CIR:**
+
+**Scenario 1: No CIR exists**
+- COPTR creates a draft/incomplete CIR
+- Returns redirection link to COPTR console
+- User fills governance details in COPTR extension
+- After CIR approval, provisioning proceeds
+
+**Scenario 2: CIR already exists**
+- COPTR identifies existing approved CIR
+- Pre-populates approved services
+- User selects relevant services for their application
+- Proceeds directly to provisioning
+
+### **Profile Onboarding (Environment-specific):**
+- User can onboard to different environments: Dev, Research, Test, Prod
+- Each environment may have different approval requirements
+- COPTR determines approval requirements based on environment
+- Service account creation and role assignments happen per environment
+
+## **Notebooks Integration**
+
+### **Current Setup:**
+- Notebooks apps will converge into DALM applications
+- For **Research environment**: Users stay in Notebooks
+- For **Production**: Must use DALM for productionization
+
+### **Integration Flow:**
+- Notebooks team will call DALM APIs for production workloads
+- Behind the scenes, DALM handles COPTR integration
+- No direct COPTR integration needed for Notebooks team
+
+## **Environment-Specific Behavior**
+
+### **Development Environment:**
+- **No CIR required** for dev environment
+- COPTR can implicitly create resources without approval process
+- Simplified onboarding flow
+
+### **Research Environment:**
+- Handled primarily through Notebooks
+- When productionizing, moves to DALM
+
+### **Production/Pre-Production:**
+- **CIR mandatory** with full approval process
+- CMO approval, budget approval, architecture review required
+- Full governance workflow through COPTR
+
+## **Key Technical Components**
+
+### **APIs and Integration:**
+- **RIR API**: Main integration point between DALM and COPTR
+- **CIR validation**: COPTR checks approval status
+- **Service Account Creation**: COPTR handles via dedicated endpoints
+- **CMS Integration**: Moving from P2C config to CMS for metadata storage
+
+### **Response Flow:**
+- COPTR returns RIR ID for tracking
+- DALM shows provisioning status on overview page
+- Asynchronous processing through batch jobs
+- PubSub notifications for status updates (future enhancement)
+
+## **User Experience:**
+
+### **Seamless Integration:**
+- User starts in DALM but gets redirected to COPTR for governance
+- Appears as single application experience
+- Context preservation between applications via URL parameters
+
+### **Pre-population:**
+- COPTR pre-fills known information from existing CIRs
+- Reduces duplicate data entry
+- Maintains consistency across systems
+
+## **Deployment Architecture:**
+- COPTR services in HRZ zone
+- Cross-zone communication via dispatcher services
+- Different deployment strategies for different environments (Dev, Sandbox, Production)
+
+This architecture ensures proper governance while providing a streamlined user experience, with environment-specific rules handled transparently by the backend systems.
